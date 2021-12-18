@@ -1,16 +1,16 @@
 const {Given, When, Then} = require('@cucumber/cucumber');
 
-Given(/^I open the (url|site) "([^"]*)?"$/, function(site, url) {
+Given(/^I open the url "([^"]*)?"$/, function(url: string) {
   return this.browser.url(url);
 });
 
 When(
-  /^I (add|set) "([^"]*)?" to the inputfield "([^"]*)?"$/, function(method, value, selector) {
+  /^I set "([^"]*)?" to the inputfield "([^"]*)?"$/, function(value: string, selector: string) {
     return this.browser.setValue(selector, value);
   });
 
 When(
-  /^I press "([^"]*)?"$/, async function(key) {
+  /^I press "([^"]*)?"$/, async function(key: string) {
     await this.browser.perform(function() {
       const actions = this.actions({async: true});
 
@@ -20,7 +20,7 @@ When(
     });
   });
 
-Then(/^I expect that the title is( not)* "([^"]*)?"$/, function(negativeCase, expectedTitle) {
+Then(/^I expect that the title is( not)* "([^"]*)?"$/, function(negativeCase: string, expectedTitle: string) {
   if (negativeCase) {
     return this.browser.assert.not.titleEquals(expectedTitle);
   }
@@ -28,7 +28,7 @@ Then(/^I expect that the title is( not)* "([^"]*)?"$/, function(negativeCase, ex
   return this.browser.assert.titleEquals(expectedTitle);
 });
 
-Then(/^I expect that (button|element|container) "([^"]*)?"( not)* contains the text "([^"]*)?"$/, async function(elementType, selector, negativeCase, expectedText) {
+Then(/^I expect that (button|element|container) "([^"]*)?"( not)* contains the text "([^"]*)?"$/, async function(elementType: string, selector: string, negativeCase: string, expectedText: string) {
   let command = 'getValue';
   if (['container', 'button'].includes(elementType) || (await this.browser.getElementProperty(selector, 'value')) === null) {
     command = 'getText';

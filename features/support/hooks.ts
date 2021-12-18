@@ -1,7 +1,7 @@
 const { Before, After, AfterAll } = require('@cucumber/cucumber')
-const { client } = require('./../../nightwatch');
+const { client } = require('../../nightwatch');
 
-let browser
+let browser: Object
 
 // Launch the browser session
 Before(async function () {
