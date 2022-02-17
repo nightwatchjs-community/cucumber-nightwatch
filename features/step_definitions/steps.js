@@ -22,10 +22,10 @@ When(
 
 Then(/^I expect that the title is( not)* "([^"]*)?"$/, function(negativeCase, expectedTitle) {
   if (negativeCase) {
-    return this.browser.assert.not.title(expectedTitle);
+    return this.browser.assert.not.titleEquals(expectedTitle);
   }
   
-  return this.browser.assert.title(expectedTitle);
+  return this.browser.assert.titleEquals(expectedTitle);
 });
 
 Then(/^I expect that (button|element|container) "([^"]*)?"( not)* contains the text "([^"]*)?"$/, async function(elementType, selector, negativeCase, expectedText) {
@@ -38,10 +38,10 @@ Then(/^I expect that (button|element|container) "([^"]*)?"( not)* contains the t
   if (negativeCase) {
     command ==='getValue' 
       ? await this.browser.assert.not.valueContains(selector, expectedText)
-      : await this.browser.assert.not.containsText(selector, expectedText);
+      : await this.browser.assert.not.textContains(selector, expectedText);
   } else {
     command ==='getValue' 
       ? await this.browser.assert.valueContains(selector, expectedText)
-      : await this.browser.assert.containsText(selector, expectedText);
+      : await this.browser.assert.textContains(selector, expectedText);
   }
 });
