@@ -1,10 +1,10 @@
 const Nightwatch = require('nightwatch');
 
-const client = Nightwatch.createClient({
+const nightwatchClient = Nightwatch.createClient({
   headless: true,
   output: true,
   silent: true, // set to false to enable verbose logging
-  browserName: process.env.BROWSER, // can be either: firefox, chrome, safari, or edge
+  browserName: process.env.BROWSER || 'chrome', // can be either: firefox, chrome, safari, or edge
 
   // set the global timeout to be used with waitFor commands and when retrying assertions/expects
   timeout: 10000,
@@ -29,4 +29,5 @@ const client = Nightwatch.createClient({
   disable_colors: false
 });
 
-module.exports.client = client
+// module.exports.client = nightwatchClient
+export default nightwatchClient

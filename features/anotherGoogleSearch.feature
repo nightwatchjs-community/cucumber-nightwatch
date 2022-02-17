@@ -5,7 +5,7 @@ Background: Background name
   Given I open the url "https://google.com"
   Then I expect that the title is "Google"
 
-@google
+@google @debug
 Scenario: Searching Google for R2-D2
   When I set "R2-D2" to the inputfield "input[name=q]"
   And I press "ENTER"
