@@ -1,7 +1,7 @@
-const { Before, After, AfterAll } = require('@cucumber/cucumber')
-const { client } = require('../../nightwatch');
+import { Before, After } from '@cucumber/cucumber'
+import { client } from '../../nightwatch.js';
 
-let browser: Object
+let browser: any
 
 // Launch the browser session
 Before(async function () {

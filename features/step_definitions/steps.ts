@@ -1,4 +1,4 @@
-const {Given, When, Then} = require('@cucumber/cucumber');
+import { Given, When, Then } from "@cucumber/cucumber";
 
 Given(/^I open the url "([^"]*)?"$/, function(url: string) {
   return this.browser.url(url);

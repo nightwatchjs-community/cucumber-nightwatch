@@ -1,6 +1,6 @@
 const Nightwatch = require('nightwatch');
 
-const client = Nightwatch.createClient({
+const nightwatchClient = Nightwatch.createClient({
   headless: true,
   output: true,
   silent: true, // set to false to enable verbose logging
@@ -29,4 +29,4 @@ const client = Nightwatch.createClient({
   disable_colors: false
 });
 
-module.exports.client = client
+module.exports.client = nightwatchClient
