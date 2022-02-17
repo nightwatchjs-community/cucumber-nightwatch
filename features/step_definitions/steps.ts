@@ -4,14 +4,12 @@ Given(/^I open the url "([^"]*)?"$/, function(url: string) {
   return this.browser.url(url);
 });
 
-When(
-  /^I set "([^"]*)?" to the inputfield "([^"]*)?"$/, function(value: string, selector: string) {
+When(/^I set "([^"]*)?" to the inputfield "([^"]*)?"$/, function(value: string, selector: string) {
     return this.browser.setValue(selector, value);
   });
 
-When(
-  /^I press "([^"]*)?"$/, async function(key: string) {
-    await this.browser.perform(function() {
+When(/^I press "([^"]*)?"$/, async function(key: string) {
+    await this.browser.perform( function(this: any) {
       const actions = this.actions({async: true});
 
       return actions

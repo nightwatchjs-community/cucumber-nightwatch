@@ -4,6 +4,5 @@ module.exports = {
     "--require features/**/*.ts",
     "--format html:report.html",
     "--format @cucumber/pretty-formatter",
-    // "--publish-quiet",
   ].join(" "),
 };

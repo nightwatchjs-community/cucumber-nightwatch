@@ -29,4 +29,5 @@ const nightwatchClient = Nightwatch.createClient({
   disable_colors: false
 });
 
-module.exports.client = nightwatchClient
+// module.exports.client = nightwatchClient
+export default nightwatchClient

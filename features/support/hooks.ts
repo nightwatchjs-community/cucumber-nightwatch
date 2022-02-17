@@ -1,5 +1,5 @@
 import { Before, After } from '@cucumber/cucumber'
-import { client } from '../../nightwatch.js';
+import client from '../../nightwatch'
 
 let browser: any
 
