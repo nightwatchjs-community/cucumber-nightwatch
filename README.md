@@ -14,14 +14,14 @@ It is different with [nightwatchjs/cucumberjs-boilerplate](https://github.com/ni
 npm run test
 ```
 
+Chose a browser
+
+```
+BROWSER=chrome npm run test
+```
+
 Pass cucumber-js Options
 
 ```shell
 npm run test -- --tags "@google" --retry 2 --parallel 4
-```
-
-Chose browser
-
-```
-BROWSER=chrome npm run test
 ```
