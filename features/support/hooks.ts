@@ -1,17 +1,14 @@
-import { Before, After } from '@cucumber/cucumber'
-import client from '../../nightwatch'
+import { Before, After, setWorldConstructor } from '@cucumber/cucumber'
+import World from './NightwatchWorld'
 
-let browser: any
+setWorldConstructor(World);
 
 // Launch the browser session
-Before(async function () {
-  browser = await client.launchBrowser();
-  this.browser = browser
+Before(async function (this: World) {
+  await this.initNightwatch();
 })
 
 // Close the browser session
-After(async function () {
-  if (browser) {
-    await browser.quit();
-  }
+After(async function (this: World) {
+  await this.endNightwatch();
 })
