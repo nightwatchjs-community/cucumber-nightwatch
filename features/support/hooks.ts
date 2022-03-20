@@ -1,6 +1,7 @@
-import { Before, After, setWorldConstructor } from '@cucumber/cucumber'
+import { Before, After, setWorldConstructor, setDefaultTimeout } from '@cucumber/cucumber'
 import World from './NightwatchWorld'
 
+setDefaultTimeout(30 * 1000);
 setWorldConstructor(World);
 
 // Launch the browser session
