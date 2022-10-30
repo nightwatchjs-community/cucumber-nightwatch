@@ -16,7 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: browser-actions/setup-chrome@latest
     - name: Use Node.js v16
       uses: actions/setup-node@v2
       with:
