@@ -14,16 +14,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - uses: browser-actions/setup-chrome@latest
+      with:
+        chrome-version: 107.0.5304.62
+    - name: Use Node.js v16
       uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16.0
         cache: 'npm'
     - run: npm ci
     - run: npm run test -- --tags "@google" --retry 2 --parallel 4
