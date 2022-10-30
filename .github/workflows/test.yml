@@ -17,12 +17,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: browser-actions/setup-chrome@latest
-      with:
-        chrome-version: 107.0.5304.62
     - name: Use Node.js v16
       uses: actions/setup-node@v2
       with:
-        node-version: 16.0
+        node-version: 16.x
         cache: 'npm'
     - run: npm ci
     - run: npm run test -- --tags "@google" --retry 2 --parallel 4
