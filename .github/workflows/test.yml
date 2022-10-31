@@ -25,3 +25,5 @@ jobs:
     - run: npm run test -- --tags "@google" --retry 2 --parallel 4
       env:
         NIGHTWATCH_HEADLESS: true
+        CUCUMBER_PUBLISH_ENABLED: true
+        CN_DEBUG: true
