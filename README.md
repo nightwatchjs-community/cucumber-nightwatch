@@ -1,5 +1,7 @@
 # Cucumber-js Nightwatch.js Integration Example
 
+[![Test](https://github.com/nightwatchjs-community/cucumber-nightwatch/actions/workflows/test.yml/badge.svg)](https://github.com/nightwatchjs-community/cucumber-nightwatch/actions/workflows/test.yml)
+
 This example is for using [Nightwatch.js(V2)](https://nightwatchjs.org/) with [Cucumber-js](https://github.com/cucumber/cucumber-js).
 
 ## Motivation
