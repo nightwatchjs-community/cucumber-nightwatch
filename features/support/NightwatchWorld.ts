@@ -1,20 +1,24 @@
 import { World } from '@cucumber/cucumber';
 import { NightwatchBrowser } from 'nightwatch'
 const Nightwatch = require('nightwatch')
+require('dotenv').config()
 
 // We use Nightwatch-js Programmatic API to create the browser session in the cucumber `context`.
 // https://nightwatchjs.org/api/programmatic/
 // https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/world.md
-console.log(`🦉 Creating Nightwatch instance`)
+
+if (process.env.CN_DEBUG == 'true') {
+  console.log(`🥒🦉 Creating Nightwatch instance`)
+}
 
 const nightwatchClient = Nightwatch.createClient({
-  headless: true,
-  output: true,
-  silent: true, // set to false to enable verbose logging
-  browserName: process.env.BROWSER || 'chrome', // can be either: firefox, chrome, safari, or edge
+  headless: process.env.NIGHTWATCH_HEADLESS === 'true',
+  output: process.env.NIGHTWATCH_OUTPUT === 'true',
+  silent: !(process.env.NIGHTWATCH_SILENT === 'false'), // set to false to enable verbose logging
+  browserName: process.env.NIGHTWATCH_BROWSER,// can be either: firefox, chrome, safari, or edge
 
   // set the global timeout to be used with waitFor commands and when retrying assertions/expects
-  timeout: 10000,
+  timeout: process.env.NIGHTWATCH_TIMEOUT || 10000,
 
   // set the current test environment from the nightwatch config
   env: null,
@@ -51,13 +55,17 @@ export default class extends World {
    * use an init method with the Before hook
    */
   async initNightwatch() {
-    console.log(`🚀 Launching browser by Nightwatch.`)
+    if (process.env.CN_DEBUG == 'true') {
+      console.info(`🥒🦉 Launching browser by Nightwatch.`)
+    }
     this.browser = await nightwatchClient.launchBrowser();
   }
 
   async endNightwatch() {
     if (this.browser) {
-      console.log(`❎ Quit browser by Nightwatch.`)
+      if (process.env.CN_DEBUG == 'true') {
+        console.info(`🥒🦉 Quit browser by Nightwatch.`)
+      }
       // @ts-ignore
       await this.browser.quit()
     }

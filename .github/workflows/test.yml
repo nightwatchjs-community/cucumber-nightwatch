@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -23,3 +23,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run test -- --tags "@google" --retry 2 --parallel 4
+      env:
+        NIGHTWATCH_HEADLESS: true
+        CUCUMBER_PUBLISH_ENABLED: true
+        CN_DEBUG: true
