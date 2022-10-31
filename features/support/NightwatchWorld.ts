@@ -1,6 +1,7 @@
 import { World } from '@cucumber/cucumber';
 import { NightwatchBrowser } from 'nightwatch'
 const Nightwatch = require('nightwatch')
+require('dotenv').config()
 
 // We use Nightwatch-js Programmatic API to create the browser session in the cucumber `context`.
 // https://nightwatchjs.org/api/programmatic/
@@ -8,13 +9,13 @@ const Nightwatch = require('nightwatch')
 console.log(`🦉 Creating Nightwatch instance`)
 
 const nightwatchClient = Nightwatch.createClient({
-  headless: true,
-  output: true,
-  silent: true, // set to false to enable verbose logging
-  browserName: process.env.BROWSER || 'chrome', // can be either: firefox, chrome, safari, or edge
+  headless: process.env.NIGHTWATCH_HEADLESS === 'true',
+  output: process.env.NIGHTWATCH_OUTPUT === 'true',
+  silent: process.env.NIGHTWATCH_SILENT === 'true', // set to false to enable verbose logging
+  browserName: process.env.NIGHTWATCH_BROWSER,// can be either: firefox, chrome, safari, or edge
 
   // set the global timeout to be used with waitFor commands and when retrying assertions/expects
-  timeout: 10000,
+  timeout: process.env.NIGHTWATCH_TIMEOUT || 10000,
 
   // set the current test environment from the nightwatch config
   env: null,

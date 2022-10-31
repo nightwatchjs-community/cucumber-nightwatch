@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Example for using Nightwatch.js with cucumber-js CLI",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "cucumber-js --publish"
   },
   "author": "Tim Yao",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "@types/nightwatch": "^2.3.9",
     "@types/node": "^18.11.7",
     "chromedriver": "^106.0.0",
+    "dotenv": "^16.0.3",
     "geckodriver": "^3.2.0",
     "nightwatch": "^2.4.1",
     "ts-node": "^10.9.1",

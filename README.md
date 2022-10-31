@@ -18,7 +18,6 @@ This example uses TypeScript, but the cucumber & nightwatch configuration can be
 
 ## Usage
 
-
 ```shell
 npm run test
 ```
@@ -26,10 +25,10 @@ npm run test
 Chose a browser
 
 ```
-BROWSER=chrome npm run test
+NIGHTWATCH_BROWSER=chrome npm run test
 ```
 
-Pass cucumber-js Options
+Pass [cucumber-js Options](https://github.com/cucumber/cucumber-js/blob/main/docs/configuration.md#options)
 
 ```shell
 npm run test -- --tags "@google" --retry 2 --parallel 4

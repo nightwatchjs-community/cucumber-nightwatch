@@ -4,3 +4,4 @@
 node_modules
 logs
 report.html
+.env
