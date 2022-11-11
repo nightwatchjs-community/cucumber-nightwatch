@@ -15,4 +15,4 @@ Scenario: Searching Google for Nightwatch
 Scenario: Searching Google for Selenium
   When I set "selenium" to the inputfield "input[name=q]"
   And I press "ENTER"
-  Then I expect that container "#main" contains the text "Selenium"
+  Then I expect that container "#main" contains the text "Selenium2"
