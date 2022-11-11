@@ -10,19 +10,45 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  test-parallel:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js v16
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
     - run: npm run test -- --tags "@google" --retry 2 --parallel 4
+      env:
+        NIGHTWATCH_HEADLESS: true
+        CUCUMBER_PUBLISH_ENABLED: true
+        CN_DEBUG: true
+
+  test-serial:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run test -- --tags "@google"
       env:
         NIGHTWATCH_HEADLESS: true
         CUCUMBER_PUBLISH_ENABLED: true
