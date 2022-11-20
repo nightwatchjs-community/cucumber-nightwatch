@@ -5,25 +5,24 @@ name: Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js v16
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run test -- --tags "@google" --retry 2 --parallel 4
-      env:
-        NIGHTWATCH_HEADLESS: true
-        CUCUMBER_PUBLISH_ENABLED: true
-        CN_DEBUG: true
+      - uses: actions/checkout@v3
+      - name: Use Node.js v16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test -- --tags "@google" --retry 2 --parallel 4
+        env:
+          NIGHTWATCH_HEADLESS: true
+          CUCUMBER_PUBLISH_ENABLED: true
+          CN_DEBUG: true
