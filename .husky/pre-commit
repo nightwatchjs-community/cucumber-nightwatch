@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "> Running linting and formatting check..."
+echo "> Please fix the errors if there is any before committing."
+
+npx eslint .
+npx prettier --check .

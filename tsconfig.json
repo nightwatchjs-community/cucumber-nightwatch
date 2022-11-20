@@ -1,13 +1,12 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
-  "exclude": [
-    "**/node_modules"
-  ],
+  "exclude": ["node_modules"],
+  "include": ["features/**/*", "*.ts"],
   // Most ts-node options can be specified here using their programmatic names.
   "ts-node": {
     // It is faster to skip typechecking.
     // Remove if you want ts-node to do typechecking.
-    // "transpileOnly": true,
+    "transpileOnly": true,
 
     "files": true,
 
@@ -16,5 +15,5 @@
       // but *only* in ts-node.  Useful if you want ts-node and tsc to use
       // different options with a single tsconfig.json.
     }
-  },
+  }
 }
