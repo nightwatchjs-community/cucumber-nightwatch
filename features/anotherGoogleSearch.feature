@@ -16,3 +16,7 @@ Scenario: Searching Google for Yoda
   When I set "Yoda" to the inputfield "input[name=q]"
   And I press "ENTER"
   Then I expect that container "#main" contains the text "Star Wars"
+
+@test2
+Scenario: waitForElementVisible
+  Then I expect that element ".lnXdpd2" is visible

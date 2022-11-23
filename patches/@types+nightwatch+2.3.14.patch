@@ -1,0 +1,31 @@
+diff --git a/node_modules/@types/nightwatch/index.d.ts b/node_modules/@types/nightwatch/index.d.ts
+index 99f4ec9..3f10b76 100755
+--- a/node_modules/@types/nightwatch/index.d.ts
++++ b/node_modules/@types/nightwatch/index.d.ts
+@@ -6412,4 +6412,25 @@ export interface PageObjectModel {
+     props?: any;
+ }
+ 
+-export const Nightwatch: NightwatchClient & Nightwatch;
++export function cli(callback: any): Nightwatch;
++export function client(settings: NightwatchOptions, reporter?: any, argv?: {}): Nightwatch;
++export function createClient({
++    headless,
++    silent,
++    output,
++    useAsync,
++    env,
++    timeout,
++    parallel,
++    reporter,
++    browserName,
++    globals,
++    devtools,
++    debug,
++    enable_global_apis,
++    config,
++}: CreateClientParams): Nightwatch;
++export function CliRunner(argv?: {}): Nightwatch;
++export function initClient(opts: any): Nightwatch;
++export function runner(argv?: {}, done?: () => void, settings?: {}): Nightwatch;
++export function runTests(testSource: string | string[], settings?: any, ...args: any[]): any;

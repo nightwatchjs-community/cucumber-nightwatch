@@ -16,5 +16,11 @@ module.exports = {
   ignorePatterns: ['*.js', 'features/support/NightwatchWorld.ts'],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
+    // TODO: Remove this rule when Nightwatch TS have time to fix the errors
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
   },
 }

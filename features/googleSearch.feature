@@ -5,13 +5,13 @@ Background: Background name
   Given I open the url "https://google.com"
   Then I expect that the title is "Google"
 
-@google
+@google @test
 Scenario: Searching Google for Nightwatch
   When I set "nightwatchjs" to the inputfield "input[name=q]"
   And I press "ENTER"
-  Then I expect that container "#main" contains the text "Nightwatch.js"
+  Then I expect that container "#main" contains the text "Nightwatch.js2"
 
-@google
+@google @test
 Scenario: Searching Google for Selenium
   When I set "selenium" to the inputfield "input[name=q]"
   And I press "ENTER"

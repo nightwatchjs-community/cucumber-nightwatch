@@ -6,6 +6,7 @@ import {
 } from '@cucumber/cucumber'
 import World from './NightwatchWorld'
 
+// default 5000 milliseconds
 setDefaultTimeout(30 * 1000)
 setWorldConstructor(World)
 
