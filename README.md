@@ -33,3 +33,33 @@ Pass [cucumber-js Options](https://github.com/cucumber/cucumber-js/blob/main/doc
 ```shell
 npm run test -- --tags "@google" --retry 2 --parallel 4
 ```
+
+## Dependencies
+
+### Cucumber-js
+
+- @cucumber/cucumber
+- @cucumber/pretty-formatter
+- dotenv
+
+### Nightwatch.js
+
+- nightwatch
+- chromedriver
+- geckodriver
+
+### TypeScript (Optional for non TS setup)
+
+- typescript
+- ts-node
+- @types/node
+- @tsconfig/node16
+- @types/nightwatch
+
+### Linter and formatter (Optional)
+
+- eslint
+- @typescript-eslint/eslint-plugin
+- @typescript-eslint/parser"
+- prettier
+- eslint-config-prettier
