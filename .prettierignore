@@ -1,0 +1,5 @@
+# Ignore all HTML files:
+*.html
+
+# Ignore artifacts:
+logs
