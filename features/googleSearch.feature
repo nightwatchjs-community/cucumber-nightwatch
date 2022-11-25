@@ -5,6 +5,10 @@ Background: Background name
   Given I open the url "https://google.com"
   Then I expect that the title is "Google"
 
+@fail
+Scenario: should fail
+  When I looking for a not existing element
+
 @google
 Scenario: Searching Google for Nightwatch
   When I set "nightwatchjs" to the inputfield "input[name=q]"
