@@ -30,6 +30,7 @@ jobs:
           NIGHTWATCH_HEADLESS: true
           CUCUMBER_PUBLISH_ENABLED: true
           CN_DEBUG: true
+          NIGHTWATCH_OUTPUT: true
 
   test-serial:
     runs-on: ubuntu-latest
@@ -51,3 +52,4 @@ jobs:
           NIGHTWATCH_HEADLESS: true
           CUCUMBER_PUBLISH_ENABLED: true
           CN_DEBUG: true
+          NIGHTWATCH_OUTPUT: true
