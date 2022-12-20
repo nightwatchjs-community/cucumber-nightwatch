@@ -12,7 +12,7 @@ When(
   }
 )
 
-When(/^I press "([^"]*)?"$/, async function (key: string) {
+When(/^I press "([^"]*)?"$/, async function (this: World, key: string) {
   /* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return */
   await this.browser!.perform(function (this: any) {
     const actions = this.actions({ async: true })
@@ -20,6 +20,36 @@ When(/^I press "([^"]*)?"$/, async function (key: string) {
     return actions.keyDown(this.Keys[key]).keyUp(this.Keys[key])
   })
   /* eslint-enable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return */
+})
+
+When(/^I looking for a not existing element$/, async function (this: World) {
+  try {
+    // These won't throw an error
+    await this.browser!.waitForElementVisible(
+      '#not-existing-element',
+      1000,
+      0,
+      true,
+      function (result) {
+        console.log('result', result)
+      }
+    )
+    await this.browser!.waitForElementPresent(
+      'css selector',
+      '#not-existing-element'
+    )
+    // await this.browser!.click('#not-existing-element')
+    // await this.browser!.ensure.elementIsVisible('#not-existing-element')
+
+    // Below works fine
+    // await this.browser!.expect.element('#not-existing-element').to.be.present;
+    // await this.browser!.expect.element('#not-existing-element').to.be.visible;
+    // await this.browser!.assert.visible('#not-existing-element')
+    console.log('No error has been caught')
+  } catch (error) {
+    console.log('We expect error from failed command: ', error)
+    throw new Error('Expected error has been caught')
+  }
 })
 
 Then(

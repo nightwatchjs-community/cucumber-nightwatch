@@ -17,7 +17,7 @@ const nightwatchClient = function () {
     output: process.env.NIGHTWATCH_OUTPUT === 'true',
     silent: !(process.env.NIGHTWATCH_SILENT === 'false'), // set to false to enable verbose logging
     browserName: process.env.NIGHTWATCH_BROWSER, // can be either: firefox, chrome, safari, or edge
-
+    always_async_commands: true,
     // set the global timeout to be used with waitFor commands and when retrying assertions/expects
     timeout: process.env.NIGHTWATCH_TIMEOUT || 10000,
 
