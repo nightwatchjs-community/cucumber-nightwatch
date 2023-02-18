@@ -3,3 +3,6 @@
 
 # Ignore artifacts:
 logs
+
+# Ignore vscode:
+.vscode
