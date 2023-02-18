@@ -13,6 +13,6 @@ module.exports = {
       },
     },
     requireModule: ['ts-node/register'],
-    require: ['features/**/*.ts'],
+    require: ['features/**/*.ts', 'src/support/**/*.ts'],
   },
 }

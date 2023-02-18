@@ -137,33 +137,6 @@ module.exports = {
     },
 
     //////////////////////////////////////////////////////////////////////////////////
-    // Configuration for when using cucumber-js (https://cucumber.io)                |
-    //                                                                               |
-    // It uses the bundled examples inside the nightwatch examples folder; feel free |
-    // to adapt this to your own project needs                                       |
-    //////////////////////////////////////////////////////////////////////////////////
-    // 'cucumber-js': {
-    //   src_folders: ['examples/cucumber-js/features/step_definitions'],
-
-    //   test_runner: {
-    //     // set cucumber as the runner
-    //     type: 'cucumber',
-
-    //     // define cucumber specific options
-    //     options: {
-    //       //set the feature path
-    //       feature_path: 'node_modules/nightwatch/examples/cucumber-js/*/*.feature',
-
-    //       // start the webdriver session automatically (enabled by default)
-    //       // auto_start_session: true
-
-    //       // use parallel execution in Cucumber
-    //       // parallel: 2 // set number of workers to use (can also be defined in the cli as --parallel 2
-    //     }
-    //   }
-    // },
-
-    //////////////////////////////////////////////////////////////////////////////////
     // Configuration for when using the browserstack.com cloud service               |
     //                                                                               |
     // Please set the username and access key by setting the environment variables:  |
