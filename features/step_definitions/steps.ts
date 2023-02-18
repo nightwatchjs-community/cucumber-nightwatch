@@ -35,7 +35,7 @@ Then(
 )
 
 Then(
-  'I expect that (button|element|container) {string}( not)* contains the text {string}',
+  /^I expect that (button|element|container) "([^"]*)?"( not)* contains the text "([^"]*)?"$/,
   async function (
     this: World,
     elementType: string,
