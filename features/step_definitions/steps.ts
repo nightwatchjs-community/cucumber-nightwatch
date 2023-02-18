@@ -14,6 +14,7 @@ When(
 
 When(/^I press "([^"]*)?"$/, async function (key: string) {
   /* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await this.browser!.perform(function (this: any) {
     const actions = this.actions({ async: true })
 
