@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run test -- --tags "@google" --retry 2 --parallel 4
+      - run: npm run test -- --tags "@ci" --retry 2 --parallel 4
         env:
           NIGHTWATCH_HEADLESS: true
           CUCUMBER_PUBLISH_ENABLED: true
@@ -46,7 +46,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm ci
-      - run: npm run test -- --tags "@google"
+      - run: npm run test -- --tags "@ci"
         env:
           NIGHTWATCH_HEADLESS: true
           CUCUMBER_PUBLISH_ENABLED: true

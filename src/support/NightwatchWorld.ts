@@ -1,7 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { World } from '@cucumber/cucumber'
-import { NightwatchBrowser } from 'nightwatch'
-const Nightwatch = require('nightwatch')
-require('dotenv').config()
+import * as Nightwatch from 'nightwatch'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 // We use Nightwatch-js Programmatic API to create the browser session in the cucumber `context`.
 // https://nightwatchjs.org/api/programmatic/
@@ -9,23 +15,22 @@ require('dotenv').config()
 
 const nightwatchClient = function () {
   if (process.env.CN_DEBUG == 'true') {
-    console.log(`🥒🦉 Creating Nightwatch instance`)
+    console.log('🥒🦉 Creating Nightwatch instance')
   }
-
   return Nightwatch.createClient({
     headless: process.env.NIGHTWATCH_HEADLESS === 'true',
     output: process.env.NIGHTWATCH_OUTPUT === 'true',
     silent: !(process.env.NIGHTWATCH_SILENT === 'false'), // set to false to enable verbose logging
-    browserName: process.env.NIGHTWATCH_BROWSER, // can be either: firefox, chrome, safari, or edge
+    browserName: process.env.NIGHTWATCH_BROWSER || null, // can be either: firefox, chrome, safari, or edge
 
     // set the global timeout to be used with waitFor commands and when retrying assertions/expects
-    timeout: process.env.NIGHTWATCH_TIMEOUT || 10000,
+    timeout: Number(process.env.NIGHTWATCH_TIMEOUT) || 10000,
 
     // set the current test environment from the nightwatch config
-    env: null,
+    env: process.env.NIGHTWATCH_BROWSER || null,
 
     // any additional capabilities needed
-    desiredCapabilities: {},
+    // desiredCapabilities: {},
 
     // can define/overwrite test globals here;
     // when using a third-party test runner only the global hooks onBrowserNavigate/onBrowserQuit are supported
@@ -36,7 +41,8 @@ const nightwatchClient = function () {
     parallel: true,
 
     // All other Nightwatch config settings can be overwritten here, such as:
-    disable_colors: false,
+    // disable_colors: true,
+    always_async_commands: true,
   })
 }
 
@@ -47,7 +53,8 @@ const nightwatchClient = function () {
  * https://github.com/cucumber/cucumber-js/blob/main/docs/support_files/world.md#custom-worlds
  */
 export default class extends World {
-  browser?: NightwatchBrowser
+  browser?: Nightwatch.NightwatchBrowser | Nightwatch.NightwatchAPI
+  loggedRole?: string
 
   /*
    * Constructors cannot be asynchronous! To work around this we'll
@@ -55,17 +62,19 @@ export default class extends World {
    */
   async initNightwatch() {
     if (process.env.CN_DEBUG == 'true') {
-      console.info(`🥒🦉 Launching browser by Nightwatch.`)
+      console.info('🥒🦉 Launching browser by Nightwatch.')
     }
     this.browser = await nightwatchClient().launchBrowser()
+    if (process.env.NIGHTWATCH_BROWSER == 'browserstack.safari') {
+      await this.browser!.maximizeWindow()
+    }
   }
 
   async endNightwatch() {
-    // @ts-ignore
-    await this.browser.quit()
     if (this.browser) {
+      await this.browser.quit()
       if (process.env.CN_DEBUG == 'true') {
-        console.info(`🥒🦉 Quit browser by Nightwatch.`)
+        console.info('🥒🦉 Quit browser by Nightwatch.')
       }
     }
   }

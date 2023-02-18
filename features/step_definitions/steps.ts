@@ -1,5 +1,5 @@
 import { Given, When, Then } from '@cucumber/cucumber'
-import World from './../support/NightwatchWorld'
+import World from '../../src/support/NightwatchWorld'
 
 Given(/^I open the url "([^"]*)?"$/, function (this: World, url: string) {
   return this.browser!.url(url)

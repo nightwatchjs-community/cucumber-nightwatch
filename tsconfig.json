@@ -1,7 +1,7 @@
 {
   "extends": "@tsconfig/node16/tsconfig.json",
   "exclude": ["node_modules"],
-  "include": ["features/**/*", "*.ts"],
+  "include": ["features/**/*", "*.ts", "src/support"],
   // Most ts-node options can be specified here using their programmatic names.
   "ts-node": {
     // It is faster to skip typechecking.
