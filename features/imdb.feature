@@ -1,4 +1,4 @@
-@imdb
+@imdb @ci
 Feature: IMDB movie search
 
 Scenario: I can search for a movie
