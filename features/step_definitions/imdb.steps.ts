@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Given, When, Then, DataTable } from '@cucumber/cucumber'
-import World from '../../src/support/NightwatchWorld'
+import World from 'cucumber-nightwatch'
 import { IMDBPage } from '../pages/imdb'
 import { IMDBSearchPage } from '../pages/imdbSearch'
 

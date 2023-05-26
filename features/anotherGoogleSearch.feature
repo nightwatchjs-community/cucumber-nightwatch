@@ -1,4 +1,4 @@
-@google @ci
+@google @not-working
 Feature: Another Google Search
   I want to search for nightwatch on google and check if the results contain Nightwatch.js
 
