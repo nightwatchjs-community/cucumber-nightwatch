@@ -38,3 +38,36 @@ Then(
       .to.equals(`${movie.title} (${movie.year}) - IMDb`)
   }
 )
+
+When('I looking for a not existing element', async function (this: World) {
+  try {
+    // These won't throw an error in v2 without patch
+    // See: patches/nightwatch+2.6.14.patch
+    // And issue demo https://github.com/nightwatchjs-community/cucumber-nightwatch/pull/9
+    await this.browser!.waitForElementVisible(
+      '#not-existing-element',
+      1000,
+      0,
+      true,
+      function (result) {
+        console.log('result', result)
+      }
+    )
+    await this.browser!.waitForElementPresent(
+      'css selector',
+      '#not-existing-element'
+    )
+    // These won't throw an error, no patch
+    // await this.browser!.click('#not-existing-element')
+    // await this.browser!.ensure.elementIsVisible('#not-existing-element')
+
+    // Below works fine in v2
+    // await this.browser!.expect.element('#not-existing-element').to.be.present;
+    // await this.browser!.expect.element('#not-existing-element').to.be.visible;
+    // await this.browser!.assert.visible('#not-existing-element')
+    console.log('No error has been caught')
+  } catch (error) {
+    console.log('We expect error from failed command: ', error)
+    throw new Error('Expected error has been caught')
+  }
+})
